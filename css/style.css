@@ -1,0 +1,277 @@
+/* ============================================================
+   计算器前端样式
+   使用 CSS 变量实现亮色 / 暗色主题切换
+   ============================================================ */
+
+:root {
+    --bg: #f0f2f5;
+    --panel-bg: #ffffff;
+    --text: #1f2430;
+    --text-dim: #6b7280;
+    --accent: #4f6ef7;
+    --btn-num-bg: #f3f4f6;
+    --btn-op-bg: #e5e7eb;
+    --btn-equals-bg: #4f6ef7;
+    --btn-equals-text: #ffffff;
+    --border: #e5e7eb;
+    --error-bg: #fdecea;
+    --error-text: #d93025;
+    --shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+body.dark {
+    --bg: #171a21;
+    --panel-bg: #22252d;
+    --text: #f1f3f5;
+    --text-dim: #9aa3af;
+    --accent: #6c8bff;
+    --btn-num-bg: #2c303a;
+    --btn-op-bg: #3a3f4b;
+    --btn-equals-bg: #6c8bff;
+    --btn-equals-text: #10131a;
+    --border: #343946;
+    --error-bg: #3d2224;
+    --error-text: #ff8a80;
+    --shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", "Microsoft YaHei", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    transition: background 0.3s, color 0.3s;
+}
+
+/* ---------- 顶部栏 ---------- */
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 18px 12px 8px;
+}
+
+.title {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.btn-ghost {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-ghost:hover {
+    background: var(--btn-op-bg);
+}
+
+/* ---------- 主布局 ---------- */
+.container {
+    display: flex;
+    gap: 20px;
+    max-width: 900px;
+    margin: 10px auto 30px;
+    padding: 0 12px;
+    flex-wrap: wrap;
+}
+
+/* ---------- 计算器面板 ---------- */
+.calc-panel {
+    flex: 1 1 400px;
+    background: var(--panel-bg);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    padding: 18px;
+    transition: background 0.3s;
+}
+
+.display {
+    background: var(--btn-num-bg);
+    border-radius: 10px;
+    padding: 16px 18px;
+    min-height: 92px;
+    text-align: right;
+    word-break: break-all;
+}
+
+.expression {
+    font-size: 18px;
+    color: var(--text-dim);
+    min-height: 24px;
+}
+
+.result {
+    font-size: 34px;
+    font-weight: 700;
+    margin-top: 4px;
+}
+
+.error-box {
+    background: var(--error-bg);
+    color: var(--error-text);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* ---------- 按钮网格 ---------- */
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.btn {
+    border: none;
+    border-radius: 10px;
+    padding: 16px 0;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: filter 0.15s, transform 0.05s;
+    color: var(--text);
+    user-select: none;
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+.btn:hover {
+    filter: brightness(0.94);
+}
+
+.btn.num {
+    background: var(--btn-num-bg);
+}
+
+.btn.op {
+    background: var(--btn-op-bg);
+    color: var(--accent);
+}
+
+.btn.func {
+    background: var(--btn-op-bg);
+}
+
+.btn.equals {
+    background: var(--btn-equals-bg);
+    color: var(--btn-equals-text);
+}
+
+/* ---------- 历史面板 ---------- */
+.history-panel {
+    flex: 1 1 260px;
+    background: var(--panel-bg);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    transition: background 0.3s;
+}
+
+.history-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.history-title {
+    font-size: 18px;
+}
+
+.history-list {
+    list-style: none;
+    overflow-y: auto;
+    max-height: 420px;
+    flex: 1;
+}
+
+.history-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+}
+
+.history-item:last-child {
+    border-bottom: none;
+}
+
+.history-meta {
+    min-width: 0;
+    flex: 1;
+}
+
+.history-expr {
+    font-size: 15px;
+    color: var(--text-dim);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.history-result {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.history-time {
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-top: 2px;
+}
+
+.btn-del {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.btn-del:hover {
+    border-color: var(--error-text);
+    color: var(--error-text);
+}
+
+.history-empty {
+    color: var(--text-dim);
+    text-align: center;
+    padding: 30px 0;
+    font-size: 14px;
+}
+
+/* ---------- 响应式 ---------- */
+@media (max-width: 700px) {
+    .container {
+        flex-direction: column;
+    }
+}

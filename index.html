@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator - Frontend</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="topbar">
+        <h1 class="title">Calculator</h1>
+        <button id="theme-toggle" class="btn-ghost" type="button">🌙 Dark Mode</button>
+    </header>
+
+    <main class="container">
+        <!-- 左侧：计算器面板 -->
+        <section class="calc-panel">
+            <div class="display">
+                <div id="expression" class="expression">&nbsp;</div>
+                <div id="result" class="result">0</div>
+            </div>
+            <div id="error-box" class="error-box hidden"></div>
+
+            <div class="buttons">
+                <button class="btn func" type="button" data-action="clear">C</button>
+                <button class="btn func" type="button" data-action="backspace">⌫</button>
+                <button class="btn op" type="button" data-value="(">(</button>
+                <button class="btn op" type="button" data-value=")">)</button>
+
+                <button class="btn num" type="button" data-value="7">7</button>
+                <button class="btn num" type="button" data-value="8">8</button>
+                <button class="btn num" type="button" data-value="9">9</button>
+                <button class="btn op" type="button" data-value="/">÷</button>
+
+                <button class="btn num" type="button" data-value="4">4</button>
+                <button class="btn num" type="button" data-value="5">5</button>
+                <button class="btn num" type="button" data-value="6">6</button>
+                <button class="btn op" type="button" data-value="*">×</button>
+
+                <button class="btn num" type="button" data-value="1">1</button>
+                <button class="btn num" type="button" data-value="2">2</button>
+                <button class="btn num" type="button" data-value="3">3</button>
+                <button class="btn op" type="button" data-value="-">−</button>
+
+                <button class="btn num" type="button" data-value="0">0</button>
+                <button class="btn num" type="button" data-value=".">.</button>
+                <button class="btn equals" type="button" data-action="equals">=</button>
+                <button class="btn op" type="button" data-value="+">+</button>
+            </div>
+        </section>
+
+        <!-- 右侧：历史记录面板 -->
+        <aside class="history-panel">
+            <div class="history-header">
+                <h2 class="history-title">History</h2>
+                <button id="clear-history" class="btn-ghost" type="button">Clear All</button>
+            </div>
+            <ul id="history-list" class="history-list"></ul>
+            <p id="history-empty" class="history-empty">No calculation records yet.</p>
+        </aside>
+    </main>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
