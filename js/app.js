@@ -10,8 +10,7 @@
  *   DELETE /api/history/{id}     删除一条历史
  *   DELETE /api/history          清空全部历史
  */
-
-/* 后端 API 地址。
+/* 后端 API 地址*/
 const API_BASE = 'https://calculator-backend-m02k.onrender.com';
 
 /* ---------- 页面元素 ---------- */
