@@ -12,9 +12,7 @@
  */
 
 /* 后端 API 地址。
-   本地开发用 http://127.0.0.1:8000；
-   部署到公网后，请改成你的后端公网地址，例如 https://your-backend.onrender.com */
-const API_BASE = 'http://127.0.0.1:8000';
+const API_BASE = 'https://calculator-backend-m02k.onrender.com';
 
 /* ---------- 页面元素 ---------- */
 const displayExpression = document.getElementById('expression');
